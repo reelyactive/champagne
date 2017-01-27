@@ -1,3 +1,8 @@
+/**
+ * Copyright reelyActive 2017
+ * We believe in an open Internet of Things
+ */
+
 CHAMPAGNE_ROOT = 'http://champagne.reelyactive.com/';
 
 var ChampagnePopper = {
