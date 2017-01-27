@@ -1,4 +1,4 @@
-CHAMPAGNE_ROOT = 'http://izaidi.me/reelyactive/';
+CHAMPAGNE_ROOT = 'http://champagne.reelyactive.com/';
 
 var ChampagnePopper = {
   
