@@ -1,7 +1,17 @@
-ASSET_ROOT = 'images/icons/';
-if (typeof CHAMPAGNE_ROOT != 'undefined') {
+/**
+ * Copyright reelyActive 2016-2017
+ * We believe in an open Internet of Things
+ */
+
+
+HAS_CHAMPAGNE = (typeof CHAMPAGNE_ROOT != 'undefined');
+if(HAS_CHAMPAGNE) {
   ASSET_ROOT = CHAMPAGNE_ROOT + 'social/icons/';
 }
+else {
+  ASSET_ROOT = 'social/icons/';
+}
+
 
 var Bubble = function(scope) {
   var self = this;
