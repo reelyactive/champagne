@@ -1,14 +1,10 @@
 /**
- * Copyright reelyActive 2016
+ * Copyright reelyActive 2016-2017
  * We believe in an open Internet of Things
  */
 
 
 DEFAULT_BUBBLE_SIZE = '240px';
-BUBBLE_TEMPLATE_URL = 'bubble.html';
-if (typeof CHAMPAGNE_ROOT != 'undefined') {
-  BUBBLE_TEMPLATE_URL = CHAMPAGNE_ROOT + 'bubble.html';
-}
 TYPE_PERSON = 'Person';
 TYPE_PRODUCT = 'Product';
 TYPE_PLACE = 'Place';
@@ -23,16 +19,23 @@ UNSUPPORTED_STORY_JSON = {
   "schema:image": DEFAULT_IMAGE_UNSUPPORTED
 };
 
+// Is the champagne loader in use?
+HAS_CHAMPAGNE = (typeof CHAMPAGNE_ROOT != 'undefined');
+if(HAS_CHAMPAGNE) {
+  BUBBLE_TEMPLATE_URL = CHAMPAGNE_ROOT + 'bubble.html';
+}
+else {
+  BUBBLE_TEMPLATE_URL = 'bubble.html'; // May or may not need a leading slash!
+}
+
 
 angular.module('reelyactive.cuttlefish', [ 'ngAnimate', 'ui.bootstrap' ])
 
   .config(function($sceDelegateProvider) {
-    if (typeof CHAMPAGNE_ROOT != 'undefined') {
+    if(HAS_CHAMPAGNE) {
       $sceDelegateProvider.resourceUrlWhitelist([
-        // Allow same origin resource loads.
-        'self',
-        // Allow loading from outer templates domain.
-        CHAMPAGNE_ROOT+'**'
+        'self',             // Allow same origin resource loads
+        CHAMPAGNE_ROOT+'**' // Allow loading from outer templates domain
       ]);
     } 
   })
