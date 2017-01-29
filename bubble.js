@@ -12,7 +12,6 @@ else {
   ASSET_ROOT = 'social/icons/';
 }
 
-
 var Bubble = function(scope) {
   var self = this;
   self.scope = scope;
@@ -231,8 +230,13 @@ Bubble.prototype = {
               'tooltip-append-to-body': true
             });
             // set overlay or href
-            if (service.hasOwnProperty('overlay')
-                && angular.module('reelyactive.bottlenose')) {
+            var hasBottlenose = true;
+            try {
+              angular.module('reelyactive.bottlenose');
+            } catch(err) {
+              hasBottlenose = false;
+            }
+            if (service.hasOwnProperty('overlay') && hasBottlenose) {
               icon.click(function(event) {
                 icon.toggleClass('active');
                 if (icon.hasClass('active')) {
@@ -832,6 +836,9 @@ var Compiler = { // need Angular to recompile new elements after DOM manipulatio
     AngularCompile = function(root)
     {
       var injector = angular.element(document).injector();
+      if (typeof injector == 'undefined') {
+        injector = angular.element($('[ng-app]')[0]).injector();
+      }
       var $compile = injector.get('$compile');
       var $rootScope = injector.get('$rootScope');
       var result = $compile(root)($rootScope);
