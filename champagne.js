@@ -3,7 +3,7 @@
  * We believe in an open Internet of Things
  */
 
-CHAMPAGNE_ROOT = 'http://champagne.reelyactive.com/';
+CHAMPAGNE_ROOT = 'https://champagne.reelyactive.com/';
 
 var ChampagnePopper = {
   
